@@ -1,25 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from "react-redux";
+import CarSelection from "./components/car-selection-container/CarSelectionContainer";
+import Race from "./components/race/Race";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const selectedCar = useSelector((state) => state.car.selectedCar);
+
+  return <div className="App">{selectedCar ? <Race /> : <CarSelection />}</div>;
 }
 
 export default App;
